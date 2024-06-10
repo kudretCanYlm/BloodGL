@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  amongo:
+    image: mongo
+
+  bloodgl.mvc:
+    image: ${DOCKER_REGISTRY-}bloodglmvc
+    build:
+      context: .
+      dockerfile: BloodGL.MVC/Dockerfile
+   
+volumes:
+  amongo_data:

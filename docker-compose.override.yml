@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  amongo:
+    container_name: amongo
+    restart: always
+    ports:
+     - "27017:27017"
+    volumes:
+     - amongo_data:/data/db
+
+  bloodgl.mvc:
+    container_name: bloodgl.mvc
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8081
+      - "MongoDbOptions__ConnectionString=mongodb://amongo:27017"
+      - "MongoDbOptions__DatabaseName=BloodGl"
+    ports:
+      - "8081:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - amongo
+

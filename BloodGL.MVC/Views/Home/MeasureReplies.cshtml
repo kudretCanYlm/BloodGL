@@ -1,0 +1,48 @@
+﻿@model IReadOnlyList<BloodGL.Application.Dtos.GlucoseMeasureReplyDto>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td class="text-right font-weight-bold">Id:</td>
+			<td>@ViewBag.measure.Id</td>
+		</tr>
+		<tr>
+			<td class="text-right font-weight-bold">Measure:</td>
+			<td>@ViewBag.measure.Measure @ViewBag.measure.UnitName</td>
+		</tr>
+		<tr>
+			<td class="text-right font-weight-bold">Level:</td>
+			<td>@ViewBag.measure.Level</td>
+		</tr>
+		<tr>
+			<td class="text-right font-weight-bold">Date:</td>
+			<td>@ViewBag.measure.CreatedAt</td>
+		</tr>
+	</tbody>
+
+
+</table>
+
+<h2 class="mb-4">Replies</h2>
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Reply</th>
+			<th>Created At</th>
+		</tr>
+	</thead>
+	<tbody id="measures">
+		@foreach (var reply in Model)
+		{
+			<tr>
+				<td>@reply.Reply </td>
+				<td>@reply.CreatedAt</td>
+			</tr>
+		}
+	</tbody>
+</table>
