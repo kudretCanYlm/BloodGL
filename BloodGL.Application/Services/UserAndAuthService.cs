@@ -42,7 +42,7 @@ namespace BloodGL.Application.Services
 
 		public async Task<IEnumerable<UserDto>> GetAll()
 		{
-			var userEntities=await userAndAuthRepository.GetAll();
+			var userEntities=await userAndAuthRepository.GetMany(x=>x.Role==RoleEnum.User);
             var userDtos=mapper.Map<IEnumerable<UserDto>>(userEntities);
 
             return userDtos;
