@@ -26,6 +26,7 @@ namespace BloodGL.Application.Services
         public async Task AddUser(AddUserDto addUserDto, RoleEnum role = RoleEnum.User)
         {
             var userEntity = mapper.Map<UserEntity>(addUserDto);
+            userEntity.Role = role;
 
             await userAndAuthRepository.AddUser(userEntity);
         }
