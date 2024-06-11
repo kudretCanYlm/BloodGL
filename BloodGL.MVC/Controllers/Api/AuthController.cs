@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using BloodGL.MVC.Models;
 
 namespace BloodGL.MVC.Controllers.Api
 {
@@ -45,8 +46,10 @@ namespace BloodGL.MVC.Controllers.Api
 
 			var principal = new ClaimsPrincipal(identity);
 			await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = true });
-			
-			return Ok(new { token = user.Token });
+
+			var response = new LoginResponseModel(user.Token);
+
+			return Ok(response);
 		}
 	}
 }
