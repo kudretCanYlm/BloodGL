@@ -1,6 +1,7 @@
 ﻿using BloodGL.Application.Dtos;
 using BloodGL.Application.Services;
 using BloodGL.MVC.Helpers.Jwt;
+using BloodGL.MVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,8 +33,9 @@ namespace BloodGL.MVC.Controllers.Api
 		{
 			var userId = addGlucoseMeasureDto.UserId;
 			await glucoseMeasureService.Add(addGlucoseMeasureDto, userId);
-
-			return Ok();
+			
+			var res = new LoginResponseModel("a");
+			return Ok(res);
 		}
 
 	}
