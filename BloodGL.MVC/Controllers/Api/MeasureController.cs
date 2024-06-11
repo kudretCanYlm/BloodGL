@@ -9,7 +9,7 @@ namespace BloodGL.MVC.Controllers.Api
 	[Route("api/[controller]")]
 	[ApiController]
 	[Authorize]
-	public class MeasureController : Controller
+	public class MeasureController : ControllerBase
 	{
 		private readonly IGlucoseMeasureService glucoseMeasureService;
 

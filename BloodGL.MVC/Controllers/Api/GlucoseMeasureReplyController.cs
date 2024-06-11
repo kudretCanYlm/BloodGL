@@ -9,7 +9,7 @@ namespace BloodGL.MVC.Controllers.Api
 	[Route("api/[controller]")]
 	[ApiController]
 	//[Authorize]
-	public class ReplyController : Controller
+	public class ReplyController : ControllerBase
 	{
 		private readonly IUserDeviceService userDeviceService;
 
