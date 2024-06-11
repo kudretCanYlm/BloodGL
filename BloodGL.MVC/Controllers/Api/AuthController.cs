@@ -24,7 +24,7 @@ namespace BloodGL.MVC.Controllers.Api
 		}
 
 		[HttpPost, Route("LoginMobile"),AllowAnonymous]
-		public async Task<IActionResult> LoginMobile(LoginDto model)
+		public async Task<IActionResult> LoginMobile([FromBody]LoginDto model)
 		{
 			var result = loginDtoValidator.Validate(model);
 			if (!result.IsValid)
