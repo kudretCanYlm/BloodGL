@@ -47,7 +47,7 @@ namespace BloodGL.MVC.Controllers.Api
 			var principal = new ClaimsPrincipal(identity);
 			await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties { IsPersistent = true });
 
-			var response = new LoginResponseModel(user.Token);
+			var response = new LoginResponseModel(user.Id);
 
 			return Ok(response);
 		}
