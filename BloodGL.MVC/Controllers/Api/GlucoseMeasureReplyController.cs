@@ -8,17 +8,17 @@ namespace BloodGL.MVC.Controllers.Api
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class GlucoseMeasureReplyController : ControllerBase
+	[Authorize]
+	public class ReplyController : Controller
 	{
 		private readonly IUserDeviceService userDeviceService;
 
-		public GlucoseMeasureReplyController(IUserDeviceService userDeviceService)
+		public ReplyController(IUserDeviceService userDeviceService)
 		{
 			this.userDeviceService = userDeviceService;
 		}
 
 		[HttpPost]
-		[Authorize]
 		public async Task<IActionResult> AddDevice([FromBody]UserDeviceViewModel userDeviceViewModel)
 		{
 			var userId = HttpContext.GetUserId();
@@ -28,7 +28,7 @@ namespace BloodGL.MVC.Controllers.Api
 		}
 
 		[HttpPost]
-		[Authorize]
+	
 		public async Task<IActionResult> RemoveDevice([FromBody] UserDeviceViewModel userDeviceViewModel)
 		{
 			var userId = HttpContext.GetUserId();
