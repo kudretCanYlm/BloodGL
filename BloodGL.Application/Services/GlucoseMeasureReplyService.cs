@@ -42,7 +42,15 @@ namespace BloodGL.Application.Services
 
 			foreach (var device in userDevices)
 			{
-				await firebaseNotification.SendNotification("Doctor Reply", reply, device.Token);
+				try
+				{
+					await firebaseNotification.SendNotification("Doctor Reply", reply, device.Token);
+				}
+				catch (Exception e)
+				{
+					System.Console.Write("error");
+					throw;
+				}
 			}
 		}
 
