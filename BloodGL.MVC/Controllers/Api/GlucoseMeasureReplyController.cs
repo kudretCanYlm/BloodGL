@@ -19,7 +19,7 @@ namespace BloodGL.MVC.Controllers.Api
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> AddDevice(UserDeviceViewModel userDeviceViewModel)
+		public async Task<IActionResult> AddDevice([FromBody]UserDeviceViewModel userDeviceViewModel)
 		{
 			var userId = HttpContext.GetUserId();
 			await userDeviceService.Add(userId, userDeviceViewModel.Token);
@@ -28,7 +28,7 @@ namespace BloodGL.MVC.Controllers.Api
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> RemoveDevice(UserDeviceViewModel userDeviceViewModel)
+		public async Task<IActionResult> RemoveDevice([FromBody] UserDeviceViewModel userDeviceViewModel)
 		{
 			var userId = HttpContext.GetUserId();
 			await userDeviceService.Add(userId, userDeviceViewModel.Token);

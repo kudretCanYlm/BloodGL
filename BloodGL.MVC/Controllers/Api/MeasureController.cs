@@ -28,7 +28,7 @@ namespace BloodGL.MVC.Controllers.Api
 		}
 
 		[HttpPost,Route("PostMeasure")]
-		public async Task<IActionResult> AddMeasure(AddGlucoseMeasureDto addGlucoseMeasureDto)
+		public async Task<IActionResult> AddMeasure([FromBody] AddGlucoseMeasureDto addGlucoseMeasureDto)
 		{
 			var userId = HttpContext.GetUserId();
 			await glucoseMeasureService.Add(addGlucoseMeasureDto, userId);
