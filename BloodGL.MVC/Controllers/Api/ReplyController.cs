@@ -24,7 +24,8 @@ namespace BloodGL.MVC.Controllers.Api
 		{
 			var userId = userDeviceViewModel.UserId;
 			await userDeviceService.Add(userId, userDeviceViewModel.Token);
-			return Ok("Added");
+			var res = new LoginResponseModel("a");
+			return Ok(res);
 		}
 
 		[HttpPost]
@@ -34,7 +35,8 @@ namespace BloodGL.MVC.Controllers.Api
 			var userId = userDeviceViewModel.UserId;
 			await userDeviceService.Add(userId, userDeviceViewModel.Token);
 
-			return Ok("removed");
+			var res = new LoginResponseModel("a");
+			return Ok(res);
 		}
 	}
 }
