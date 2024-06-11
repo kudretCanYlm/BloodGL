@@ -19,6 +19,7 @@ namespace BloodGL.MVC.Controllers.Api
 		}
 
 		[HttpPost]
+		[Route("AddDevice")]
 		public async Task<IActionResult> AddDevice([FromBody]UserDeviceViewModel userDeviceViewModel)
 		{
 			var userId = userDeviceViewModel.UserId;
@@ -27,7 +28,7 @@ namespace BloodGL.MVC.Controllers.Api
 		}
 
 		[HttpPost]
-	
+		[Route("RemoveDevice")]
 		public async Task<IActionResult> RemoveDevice([FromBody] UserDeviceViewModel userDeviceViewModel)
 		{
 			var userId = userDeviceViewModel.UserId;
