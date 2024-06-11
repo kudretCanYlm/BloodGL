@@ -34,7 +34,7 @@ namespace BloodGL.MVC.Controllers.Api
 
 			var user = await userAndAuthService.LoginAndGetUser(model);
 
-			if (user == null) { return BadRequest("username or password is invalid"); }
+			if (user == null) { return BadRequest("username or password is invalid "+model.Username+" "+model.Password); }
 
 			if (user.Role == RoleEnum.Admin) { return BadRequest("you are not an user"); }
 
