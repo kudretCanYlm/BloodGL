@@ -8,7 +8,7 @@ namespace BloodGL.MVC.Controllers.Api
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	[Authorize]
+	
 	public class MeasureController : ControllerBase
 	{
 		private readonly IGlucoseMeasureService glucoseMeasureService;
@@ -19,9 +19,9 @@ namespace BloodGL.MVC.Controllers.Api
 		}
 
 		[HttpGet, Route("GetMeasures")]
-		public async Task<IActionResult> GetMeasures()
+		public async Task<IActionResult> GetMeasures(string id)
 		{
-			var userId = HttpContext.GetUserId();
+			var userId = id;
 			var measures = await glucoseMeasureService.GetMeasures(userId);
 
 			return Ok(measures);
@@ -30,7 +30,7 @@ namespace BloodGL.MVC.Controllers.Api
 		[HttpPost,Route("PostMeasure")]
 		public async Task<IActionResult> AddMeasure([FromBody] AddGlucoseMeasureDto addGlucoseMeasureDto)
 		{
-			var userId = HttpContext.GetUserId();
+			var userId = addGlucoseMeasureDto.UserId;
 			await glucoseMeasureService.Add(addGlucoseMeasureDto, userId);
 
 			return Ok();
